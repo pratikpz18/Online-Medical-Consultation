@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--
+	<title>Home - Online Medical Consultaion</title>
+	<meta name="viewport" content="width=device-width, initia-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="try.css">
+	-->
+	<meta charset="UTF-8"> 
+		<title> Login </title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		
+</head>
+<body>
+	<nav>
+	<form action="{{url_for('home')}}" method ="POST">
+		<label class="logo">Doctor</lable>
+		<ul>
+			<li><input class="active" type="submit"8 name="profile_button" value="Profile"></li>
+			<li><input type="submit" name="bookappointment_button" value="Book Appointment"></li>
+			<li><input type="submit" name="logout_button" value="Logout"></li>
+		</ul>
+	</form>
+	</nav>
+</body> 
+</html>
