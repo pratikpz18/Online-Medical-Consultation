@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+    </head>
+    <style type="text/css">
+    	body{
+    		background-image:linear-gradient(to right, rgb(161, 255, 206), rgb(250, 255, 209));
+    		}
+    	table{
+    		table-layout: fixed;
+    		border-collapse: collapse;
+    		border: 1px solid black;
+    		width: 50%;
+    	}
+    	td{
+    		width: 15%;
+    	}
+		th, td {
+			  padding: 5px;
+			  text-align: center;
+			  border: 1px solid black;
+			}
+    </style>
+    <body>
+    	<!-- <h1><label class="logo"><a href="{{url_for('home')}}" style="text-decoration: none;">Doctor</a></lable></h1> -->
+ 		<h1>Profile</h1>
+        <p>Username :&nbsp{{user.username}}</p>
+        <p>Email &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp{{user.email}}</p>
+        <p>Password :&nbsp{{user.password}}</p>
+
+        <input type="button" value="Check Appointment" onclick="showappoint()"><br><br>
+
+
+        <table id="apnttable" style="display: none;">
+        	<thead>
+        		<tr>
+        			<th>Appontment ID</th>
+        			<th>Appointment Date</th>
+        			<th>Symptoms</th>
+        		</tr>
+        	</thead>
+
+        	<tbody>
+	        	{% for r in data %}
+	        	<tr>
+			        <td>{{r["appoint_id"]}}</td>
+			        <td>{{r["appoint_date"]}}</td>
+			        <td>{{r["symptoms"]}}</td>
+			    </tr>
+		        {% endfor %}
+		    </tbody>
+	    </table>
+
+
+		    <script type="text/javascript">
+		    	function showappoint(){
+		    		var t = document.getElementById('apnttable') ;
+		    		if (t.style.display === 'none') {
+		    			t.style.display = 'block' ;
+		    		}
+		    		else{
+		    			t.style.display = 'none' ;
+		    		}
+		    	}
+	    	</script>
+
+    </body>
+</html>
