@@ -35,7 +35,6 @@ form{
 	text-transform: uppercase;
 	font-weight: bold;
 	line-height: 80px;
-	color: #e0ac69 ;
 	letter-spacing: 3px;
 	text-decoration: underline;
 	margin-left: 2rem;
@@ -47,8 +46,8 @@ form{
 }
 
 .logo a{
-    color: #e0ac69  ;
-    text-decoration: none;
+	color: #e0ac69 ;
+	text-decoration: none;
 }
 
 nav ul{
@@ -118,7 +117,7 @@ section{
 	font-weight: 600;
 	color: #3d3d29 ;
 	position: absolute;
-	top:26%;
+	top: 30%;
 	left: 4.5%;
 	width: 40%;
 }
@@ -126,22 +125,33 @@ section{
 section p{
 	font-size: 2.5rem;
 	word-spacing: 1px;
-	line-height: 1.5;
+	line-height: 1.2;
+}
+
+section p strong{
+	font-size: 2.8rem;
+	color: #39a78e ;
 }
 
 section button{
+	margin-top: 1.2rem ;
+	margin-left: 0.4rem ;
 	text-transform: uppercase;
 	padding: 12px 24px;
-	font-size: 2rem;
+	font-size: 1.9rem;
 	background: #34495e;
 	outline: none;
 	border: 1px solid grey;
+	cursor: pointer;
+}
+
+section button:hover{
+	transform: scale(1.05);
 }
 
 section  a{
-	color: #32CD32 ;
+	color: #e0ac69 ;
 	text-decoration: none;
-	cursor:pointer;
 	font-weight: bolder;
 }
 
