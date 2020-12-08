@@ -2,6 +2,8 @@ from flask import Flask,session, render_template, request, redirect, sessions,ur
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_mail import Mail,Message
 import hashlib
 
 app=Flask('__name__')
@@ -13,6 +15,13 @@ app.config['MYSQL_PASSWORD'] = '1234'
 app.config['MYSQL_DB'] = 'onlinemedicalconsultation'
 
 mysql=MySQL(app)
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'testproject1080@gmail.com'
+app.config['MAIL_PASSWORD'] = 'Pass@1234'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 @app.route('/',methods=['POST','GET'])
 def index():
@@ -50,7 +59,7 @@ def home():
         elif request.form.get('logout_button'):
             return redirect(url_for('logout'))
     else:
-        return render_template('home.html')
+        return render_template('home.html',session=session)
 
 @app.route('/contact')
 def contact():
@@ -68,12 +77,13 @@ def login():
         username = request.form['username']
         password = request.form['password']
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password,))
+        cursor.execute('SELECT * FROM accounts WHERE username = % s AND password=md5(%s)', (username,password))
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
+            session['email'] = account['email']
             msg = 'Logged in successfully !'
             return redirect(url_for('home'))
             #return render_template('home.html', msg=msg)
@@ -87,6 +97,7 @@ def signup():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
         username = request.form['username']
         password = request.form['password']
+        hashPass = hashlib.md5(password.encode('utf8')).hexdigest()
         email = request.form['email']
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM accounts WHERE username = % s', (username,))
@@ -100,7 +111,7 @@ def signup():
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
             msg = 'Invalid email address !'
         else:
-            cursor.execute('INSERT INTO accounts VALUES (NULL, % s, % s, % s)', (username,email, password ))
+            cursor.execute('INSERT INTO accounts VALUES (NULL, % s, % s, % s)', (username,email,hashPass))
             mysql.connection.commit()
             msg = 'You have successfully signedup !'
     elif request.method == 'POST':
@@ -143,7 +154,14 @@ def bookappointment():
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('INSERT INTO bookappointment VALUES (NULL,%s, %s, %s, %s, %s,%s,%s,%s,%s)',(session['id'],fname,lname,int(age),gender,date,phone,symptoms,reportfile))
         mysql.connection.commit()
-        msg = 'Your appointment is booked successfully !';
+        cursor.execute('SELECT * FROM accounts WHERE id = %s',(session['id'],))
+        user = cursor.fetchone()
+        msg = Message(sender=app.config.get("MAIL_USERNAME"),recipients=[session['email']])
+        msg.subject = "Appointment booked successfully!"
+        msg.body = "Hello Sahil from TestProject!"
+        msg.body="Hello "+fname+" !\n\t"+"Your appointment is booked successfully on " + date +"!\n\nThank You,\nTeam Medico"
+        mail.send(msg)
+        msg = 'Successfully booked! You will receive confirmation mail';
     elif request.method == 'POST':
         msg = 'Please fill out the form !'
     return render_template('bookappointment.html',msg=msg)
