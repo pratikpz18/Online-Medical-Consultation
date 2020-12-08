@@ -47,6 +47,11 @@ nav{
 	font-size: 36px;
 }
 
+.logo a{
+    color: #e0ac69  ;
+    text-decoration: none;
+}
+
 nav ul{
 	display: flex;
 	align-items: center;
