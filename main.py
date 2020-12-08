@@ -2,7 +2,6 @@ from flask import Flask,session, render_template, request, redirect, sessions,ur
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Mail,Message
 import hashlib
 
