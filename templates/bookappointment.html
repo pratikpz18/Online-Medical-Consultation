@@ -1,4 +1,4 @@
-<Html>
+<!Doctype Html>
 <head> 
 	<title>BookAppointment-Medico</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,8 +24,8 @@
 	<form action="{{url_for('bookappointment')}}" method="POST" enctype="multipart/form-data" name="bookappointment" class = "bookappointment" onsubmit="return validate_file();">
 		<div>{{ msg }}</div>
 
-		<!-- <label> Appointment Date:*</label>       
-		<input type="Date" name="appointmentdate" required/> -->
+		<label> Appointment Date:*</label>       
+		<input type="Date" name="appointmentdate" required/>
 
 		<label> Full name:* </label>       
 		<input type="text" name="firstname" size="30" pattern="[A-Za-z]{1,32}" placeholder="Your Name" required /> 
