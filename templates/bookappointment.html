@@ -1,4 +1,4 @@
-<!Doctype Html>
+<Html>
 <head> 
 	<title>BookAppointment-Medico</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
 			</ul>
 		</form>
 		<div class="hamburger">
-			<i class="fa fa-bars" aria-hidden="true"></i>
+			<i class="fa fa-bars" aria-hidden="true" onclick="navslide()"></i>
 		</div>
 	</nav>
 	<form action="{{url_for('bookappointment')}}" method="POST" enctype="multipart/form-data" name="bookappointment" class = "bookappointment" onsubmit="return validate_file();">
@@ -28,7 +28,7 @@
 		<input type="Date" name="appointmentdate" required/>
 
 		<label> Full name:* </label>       
-		<input type="text" name="firstname" size="30" pattern="[A-Za-z]{1,32}" placeholder="Your Name" required /> 
+		<input type="text" name="firstname" size="30" placeholder="Your Name" required /> 
 
 		<label> 
 		Gender* :
@@ -56,16 +56,4 @@
         <p>Schedule Your <strong>Appointment</strong> Today for consulting with the best doctors</p>
     </section>
 </body>
-	<script>
-			const navslide = () => {
-				const hamburger = document.querySelector(".hamburger");
-				const nav = document.querySelector(".nav");
-
-				hamburger.addEventListener('click', () => {
-					nav.classList.toggle("nav2");
-				 });
-			}
-
-			navslide();
-	</script>
 </html>
