@@ -6,6 +6,7 @@
     <meta charset="UTF-8"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile.css') }}">
+    <script type="text/javascript" src="{{url_for('static',filename='JScript.js')}}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
@@ -19,7 +20,7 @@
             </ul>
         </form>
         <div class="hamburger">
-            <i class="fa fa-bars" aria-hidden="true"></i>
+            <i class="fa fa-bars" aria-hidden="true" onclick="navslide()"></i>
         </div>
     </nav>
     <section>
@@ -70,19 +71,6 @@
                 });
                 return false;
             });
-            
-
-
-            const navslide = () => {
-            const hamburger = document.querySelector(".hamburger");
-            const nav = document.querySelector(".nav");
-
-            hamburger.addEventListener('click', () => {
-                nav.classList.toggle("nav2");
-             });
-            }
-
-        navslide();
 
 </script>
 </html>
