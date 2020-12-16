@@ -84,10 +84,6 @@ def contact():
         message = 'Successfull! You will receive confirmation mail';
     return render_template('contact.html',message = message)
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
 @app.route('/login',methods=['POST','GET'])
 def login():
 #    return render_template('login.html')
