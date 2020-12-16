@@ -23,33 +23,25 @@
 	</nav>
 	<form action="{{url_for('bookappointment')}}" method="POST" enctype="multipart/form-data" name="bookappointment" class = "bookappointment" onsubmit="return validate_file();">
 		<div>{{ msg }}</div>
-
-		<label> Appointment Date:*</label>       
-		<input type="Date" name="appointmentdate" required/>
-
-		<label> Full name:* </label>       
-		<input type="text" name="firstname" size="30" placeholder="Your Name" required /> 
-
+		<label> Appointment Date:*</label><input type="Date" name="appointmentdate" required=""><br>
+		<label> Full name:*</label><input type="text" name="firstname" size="30" placeholder="Your Name" required="">
 		<label> 
 		Gender* :
 		</label> 
-		<select name="gender" required>
+		<select name="gender" required="">
 			<option value="Male">Male</option>
 			<option value="Female">Female</option>
 			<option value="Other">Other</option>
 		</select>
-	 	
 	 	<label>
 		Phone :
 		</label>
-		<input type="tel" name="phone"  maxlength="10" placeholder="9108965444" required/> 
-
+		<input type="tel" name="phone" maxlength="10" placeholder="9108965444" required=""> 
 		<label> Symptoms*</label>
-		<textarea cols="60" rows="5"  name="symptoms" placeholder="Tell us what symptoms you have" required></textarea>
-
+		<textarea cols="60" rows="5" name="symptoms" placeholder="Tell us what symptoms you have" required=""></textarea>
 		<label>Upload Previous Medical Report (If any)</label>
 		<label><sub>only .pdf/.doc/.txt format is allowed</sub></label>
-		<input id="file" type="file" name="reportfile" notrequired onchange="return validate_file();">
+		<input id="file" type="file" name="reportfile" notrequired="" onchange="return validate_file();">
 		<button>Submit</button>
 	</form>
 	<section>
