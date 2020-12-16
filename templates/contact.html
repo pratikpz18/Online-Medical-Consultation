@@ -6,14 +6,13 @@
     <meta charset="UTF-8"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='contact.css')}}">
+	<script type="text/javascript" src="{{url_for('static',filename='JScript.js')}}"></script>
 </head>
 <body>
 	<nav>
 		<form action="/" method="POST">
 			<label class="logo"><a href="{{url_for('index')}}">Medico</a></label>
 			<ul class="nav">
-				<li><i class="fa fa-info-circle " aria-hidden="true"></i><input type="submit" name="about_button" value="About" 
-				></li>
 				<li><i class="fa fa-phone" aria-hidden="true"></i><input type="submit" name="contact_button" value="Contact" 
 				></li>
 				<li><i class="fa fa-sign-in" aria-hidden="true"></i><input type="submit" name="login_button" value="Login"></li>
@@ -21,7 +20,7 @@
 			</ul>
 		</form>
 		<div class="hamburger">
-			<i class="fa fa-bars" aria-hidden="true"></i>
+			<i class="fa fa-bars" aria-hidden="true" onclick="navslide()"></i>
 		</div>
 	</nav> 
 	<section>
@@ -35,11 +34,11 @@
 			</article>
 		</div>
 		<aside>
-			<form>
+			<form action="{{url_for('contact')}}" method="POST" enctype="multipart/form-data">
 				<h2>Get in Touch</h2>
-				<input type="text" name="fullname" size="30" pattern="[A-Za-z]{1,32}" placeholder="Your Name" required /> 
-				<input  type="email" name="Email"  placeholder="Email Address" required />
-				<textarea placeholder="Type your message/query here" required /></textarea>
+				<input type="text" name="fullname" size="30" placeholder="Your Name" required /> 
+				<input  type="email" name="email"  placeholder="Email Address" required />
+				<textarea name="msg"  placeholder="Type your message/query here" required /></textarea>
 				<div>
 					<button>Send</button>
 				</div>
@@ -47,16 +46,4 @@
 		</aside>
 	</section>
 </body>
-<script>
-	const navslide = () => {
-		const hamburger = document.querySelector(".hamburger");
-		const nav = document.querySelector(".nav");
-
-		hamburger.addEventListener('click', () => {
-			nav.classList.toggle("nav2");
-		 });
-	}
-
-	navslide();
-</script>
 </html>
