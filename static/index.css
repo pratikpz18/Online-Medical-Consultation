@@ -11,7 +11,7 @@ body{
 	background-size: cover;
 	font-size: 18px;
 	z-index: -22;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 nav{
@@ -47,8 +47,8 @@ form{
 }
 
 .logo a{
-    color: #e0ac69  ;
-    text-decoration: none;
+	color: #e0ac69 ;
+	text-decoration: none;
 }
 
 nav ul{
@@ -78,7 +78,6 @@ input[type="submit"]{
 	font-size: 20px;
 	text-transform: uppercase;
 	border: transparent;
-	outline:none;
 	cursor:pointer;
 }
 
@@ -90,29 +89,29 @@ input[type="submit"]:hover{
 	color: white;
 }
 
-ul li:nth-child(3) input[type="submit"]{
+ul li:nth-child(2) input[type="submit"]{
 	color: #00BFFF ;
 }
 
-ul li:nth-child(3) i.fa{
+ul li:nth-child(2) i.fa{
 	color: #00BFFF ;
 	font-size: 1.4rem;
 }
 
-ul li:nth-child(4) input[type="submit"]{
+ul li:nth-child(3) input[type="submit"]{
 	color: #FF4500 ;
 }
 
-ul li:nth-child(4) i.fa{
+ul li:nth-child(3) i.fa{
 	color: #FF4500 ;
 }
 
-ul li:nth-child(3) input[type="submit"]:hover{
+ul li:nth-child(2) input[type="submit"]:hover{
 	border: none;
 	border-bottom: 1px solid #00BFFF;
 }
 
-ul li:nth-child(4) input[type="submit"]:hover{
+ul li:nth-child(3) input[type="submit"]:hover{
 	border: none;
 	border-bottom: 1px solid #FF4500;
 }
@@ -148,6 +147,7 @@ section button a{
 	cursor:pointer;
 	font-weight: bolder;
 }
+
 
 .hamburger{
 	display: none;
