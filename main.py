@@ -1,16 +1,18 @@
-from flask import Flask,session, render_template, request, redirect, sessions,url_for, Response
+from flask import jsonify,Flask,session, render_template, request, redirect, sessions,url_for, Response
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+import json
 from flask_mail import Mail,Message
 import hashlib
+import datetime
 
 app=Flask('__name__')
 app.secret_key='Secrey'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '1234'
+app.config['MYSQL_PASSWORD'] = 'Pass@1234'
 app.config['MYSQL_DB'] = 'onlinemedicalconsultation'
 
 mysql=MySQL(app)
@@ -60,9 +62,27 @@ def home():
     else:
         return render_template('home.html',session=session)
 
-@app.route('/contact')
+@app.route('/contact',methods=['POST','GET'])
 def contact():
-    return render_template('contact.html')
+    message=''
+    form_dict=request.form.to_dict()
+    if request.method == 'POST' and 'fullname' in request.form and 'email' in request.form and 'msg' in request.form:
+        fullname = request.form['fullname']
+        if len(request.form['msg'])==0 :
+            message = 'Please fill out the form !'
+            return render_template('contact.html', message=message)
+        email = request.form['email']
+        msg = request.form['msg']
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('INSERT INTO contact_info VALUES (NULL,%s, %s,%s)',(fullname,email,msg))
+        mysql.connection.commit()
+        msg = Message(sender=app.config.get("MAIL_USERNAME"),recipients=[request.form['email']])
+        msg.subject = "query received successfully!"
+        msg.body = "Hello Sahil from TestProject!"
+        msg.body="Hello "+fullname+" !\n\t"+"Your query is received\n will get back to you as soon as possible.!\n\nThank You,\nTeam Medico"
+        mail.send(msg)
+        message = 'Successfull! You will receive confirmation mail';
+    return render_template('contact.html',message = message)
 
 @app.route('/about')
 def about():
@@ -117,6 +137,11 @@ def signup():
         msg = 'Please fill out the form !'
     return render_template('signup.html', msg=msg)
 
+def myconverter(o):
+    if isinstance(o, datetime.date):
+        return o.__str__()
+
+
 @app.route('/home/profile', methods=['POST','GET'])
 def profile():
     if isloggedin()==False:
@@ -124,10 +149,22 @@ def profile():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor) 
     cursor.execute('SELECT * FROM accounts WHERE id = %s',(session['id'],))
     user = cursor.fetchone()
+    cursor.execute('SELECT COUNT(*) FROM bookappointment WHERE user_id = %s', (session['id'],))
+    no =cursor.fetchone()
+    no=no['COUNT(*)']
+    return render_template('profile.html', user=user,noApnts=no)
+    
+@app.route('/home/profile/yourappointments', methods=['POST','GET'])
+def bookedApnt():
+    if isloggedin()==False:
+        return redirect(url_for('index'))
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute('SELECT * FROM bookappointment WHERE user_id = %s', (session['id'],))
     data = cursor.fetchall()
-    return render_template('profile.html', user=user , data=data) 
-    
+    data = json.dumps(data, default=myconverter)
+    print(data)
+    return jsonify(data)
+
 
 @app.route('/home/bookappointment', methods=['POST','GET'])
 def bookappointment():
@@ -135,30 +172,27 @@ def bookappointment():
         return redirect(url_for('index'))
     msg=''
     form_dict=request.form.to_dict()
-    #if request.method == 'POST' and 'appointmentdate' in request.form and 'firstname' in request.form and 'lastname' in request.form and 'phone' in request.form and 'symptoms' in request.form and 'gender' in request.form:
     if request.method == 'POST':
     #if request.method == 'POST' and request.form.validate():
-        fname = request.form['firstname']
-        lname = request.form['lastname']
-        if len(request.form['age'])==0 or len(request.form['appointmentdate'])==0 :
+        fullname = request.form['firstname']
+        if len(request.form['appointmentdate'])==0 :
         #if 'age' not in request.form:
             msg = 'Please fill out the form !'
             return render_template('bookappointment.html', msg=msg)
-        age = request.form['age']
         phone = request.form['phone']
         symptoms = request.form['symptoms']
         gender = request.form['gender']
         reportfile = request.files['reportfile']
         date = request.form['appointmentdate']
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('INSERT INTO bookappointment VALUES (NULL,%s, %s, %s, %s, %s,%s,%s,%s,%s)',(session['id'],fname,lname,int(age),gender,date,phone,symptoms,reportfile))
+        cursor.execute('INSERT INTO bookappointment VALUES (NULL,%s, %s, %s,%s,%s,%s,%s)',(session['id'],fullname,gender,date,phone,symptoms,reportfile))
         mysql.connection.commit()
         cursor.execute('SELECT * FROM accounts WHERE id = %s',(session['id'],))
         user = cursor.fetchone()
         msg = Message(sender=app.config.get("MAIL_USERNAME"),recipients=[session['email']])
         msg.subject = "Appointment booked successfully!"
         msg.body = "Hello Sahil from TestProject!"
-        msg.body="Hello "+fname+" !\n\t"+"Your appointment is booked successfully on " + date +"!\n\nThank You,\nTeam Medico"
+        msg.body="Hello "+fullname+" !\n\t"+"Your appointment is booked successfully on \t" + date +"!\n\nThank You,\nTeam Medico"
         mail.send(msg)
         msg = 'Successfully booked! You will receive confirmation mail';
     elif request.method == 'POST':
