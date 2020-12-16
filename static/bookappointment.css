@@ -132,7 +132,7 @@ ul li:nth-child(3) input[type="submit"]:hover{
 .bookappointment{
 	position: absolute;
 	line-height: 2;
-	top: 19vh;
+	top: 20vh;
 	left: 18%;
 	background: #34495e; 
 	padding: 1.5rem;
@@ -166,10 +166,6 @@ ul li:nth-child(3) input[type="submit"]:hover{
     outline: none;
 }
 
-.bookappointment input:nth-child(1){
-	margin-bottom: 0.2rem;
-}
-
 .bookappointment input:focus,
 .bookappointment textarea:focus,
 .bookappointment select:focus{
@@ -179,13 +175,14 @@ ul li:nth-child(3) input[type="submit"]:hover{
 .bookappointment label sub{
 	font-weight: lighter;
 	font-size: 0.7rem;
+	line-height: 1;
 }
 
 .bookappointment button{
 	cursor: pointer;
 	text-transform: uppercase;
 	font-weight: bolder;
-	margin-top: 4%;
+	margin-top: 8%;
     width: 90%;
     margin-left: 5%;
 	padding: 8px;
