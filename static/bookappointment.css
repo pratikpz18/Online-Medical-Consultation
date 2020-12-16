@@ -48,8 +48,8 @@ nav{
 }
 
 .logo a{
-    color: #e0ac69  ;
-    text-decoration: none;
+	color: #e0ac69 ;
+	text-decoration: none;
 }
 
 nav ul{
@@ -132,7 +132,7 @@ ul li:nth-child(3) input[type="submit"]:hover{
 .bookappointment{
 	position: absolute;
 	line-height: 2;
-	top: 20vh;
+	top: 19vh;
 	left: 18%;
 	background: #34495e; 
 	padding: 1.5rem;
@@ -160,10 +160,14 @@ ul li:nth-child(3) input[type="submit"]:hover{
     margin-left: 5%;
     font-size: 1rem;
     width: 50%;
-    padding: 0.4rem;
+    padding: 0.5rem;
     border: none;
-    border-radius: 3%;
+    border-radius: 5px;
     outline: none;
+}
+
+.bookappointment input:nth-child(1){
+	margin-bottom: 0.2rem;
 }
 
 .bookappointment input:focus,
@@ -190,6 +194,7 @@ ul li:nth-child(3) input[type="submit"]:hover{
 	color: #2a5d67 ;
 	outline: none;
 	border: 1px solid grey;
+	border-radius: 6px;
 }
 
 .bookappointment button:hover{
