@@ -5,6 +5,7 @@
 }
 
 body{
+	position: relative;
 	font-family: "Times New Roman", Times, serif ;
 	min-height: 100vh;
 	background:linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url(index.jpg) no-repeat;
@@ -46,11 +47,6 @@ form{
 	font-size: 36px;
 }
 
-.logo a{
-	color: #e0ac69 ;
-	text-decoration: none;
-}
-
 nav ul{
 	display: flex;
 	align-items: center;
@@ -78,6 +74,7 @@ input[type="submit"]{
 	font-size: 20px;
 	text-transform: uppercase;
 	border: transparent;
+	outline:none;
 	cursor:pointer;
 }
 
@@ -86,7 +83,6 @@ input[type="submit"]:hover{
 	border: none;
 	border-bottom: 1px solid white;
 	font-size: 22px;
-	ourline:none;
 	color: white;
 }
 
@@ -115,6 +111,10 @@ ul li:nth-child(2) input[type="submit"]:hover{
 ul li:nth-child(3) input[type="submit"]:hover{
 	border: none;
 	border-bottom: 1px solid #FF4500;
+}
+
+.section{
+	height: 100vh;
 }
 
 section{
@@ -147,6 +147,45 @@ section button a{
 	text-decoration: none;
 	cursor:pointer;
 	font-weight: bolder;
+}
+
+footer{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	background-color: black;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.footer-left,
+.footer-center,
+.footer-right{
+	display: inline-block;
+	vertical-align: top;
+	padding: 0.4rem;
+	line-height: 1.2;
+}
+
+.footer-left{
+	width: 40%;
+}
+
+.footer-center{
+	width: 35%;
+}
+
+.footer-right{
+	width: 30%;
+}
+
+footer h3{
+	text-transform: uppercase;
+	text-decoration: underline;
+	text-decoration-color: red;
 }
 
 
