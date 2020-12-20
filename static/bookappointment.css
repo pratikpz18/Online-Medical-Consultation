@@ -178,6 +178,10 @@ ul li:nth-child(3) input[type="submit"]:hover{
 	line-height: 1;
 }
 
+.bookappointment .file{
+	margin-top: -1.8rem;
+}
+
 .bookappointment button{
 	cursor: pointer;
 	text-transform: uppercase;
@@ -269,9 +273,10 @@ section p strong{
 
 	.bookappointment{
 		width: 70%;
-		left: 5%;
-		top: 12vh;
+		left: 6%;
+		top: 18vh;
 		font-size: 0.95rem ;
+		line-height: 1.4;
 	}
 
 	.bookappointment input,textarea,select{
@@ -282,6 +287,10 @@ section p strong{
 	.bookappointment button{
 		padding: 6px;
 		font-size: 0.95rem;
+	}
+
+	.bookappointment .file{
+		margin-top: 0;
 	}
 
     section{
