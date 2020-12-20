@@ -12,14 +12,14 @@ app.secret_key='Secrey'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Pass@1234'
+app.config['MYSQL_PASSWORD'] = '*****'
 app.config['MYSQL_DB'] = 'onlinemedicalconsultation'
 
 mysql=MySQL(app)
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'testproject1080@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Pass@1234'
+app.config['MAIL_PASSWORD'] = '********'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -27,13 +27,9 @@ mail = Mail(app)
 @app.route('/',methods=['POST','GET'])
 def index():
     if request.method=='POST':
-        # if request.form.get('home_button'):
-        #     return render_template('home.html')
 
-        if request.form.get('about_button'):
-            return redirect(url_for('about'))
 
-        elif request.form.get('contact_button'):
+        if request.form.get('contact_button'):
             return redirect(url_for('contact'))
 
         elif request.form.get('login_button'):
@@ -83,6 +79,8 @@ def contact():
         mail.send(msg)
         message = 'Successfull! You will receive confirmation mail';
     return render_template('contact.html',message = message)
+
+
 
 @app.route('/login',methods=['POST','GET'])
 def login():
@@ -158,7 +156,7 @@ def bookedApnt():
     cursor.execute('SELECT * FROM bookappointment WHERE user_id = %s', (session['id'],))
     data = cursor.fetchall()
     data = json.dumps(data, default=myconverter)
-    print(data)
+    #print(data)
     return jsonify(data)
 
 
@@ -187,8 +185,7 @@ def bookappointment():
         user = cursor.fetchone()
         msg = Message(sender=app.config.get("MAIL_USERNAME"),recipients=[session['email']])
         msg.subject = "Appointment booked successfully!"
-        msg.body = "Hello Sahil from TestProject!"
-        msg.body="Hello "+fullname+" !\n\t"+"Your appointment is booked successfully on \t" + date +"!\n\nThank You,\nTeam Medico"
+        msg.body="Hello "+fullname+" !\n\t"+"Your appointment is booked successfully on \t"+date+"!\n\nThank You,\nTeam Medico"
         mail.send(msg)
         msg = 'Successfully booked! You will receive confirmation mail';
     elif request.method == 'POST':
