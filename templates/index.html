@@ -5,13 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8"> 
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
-	<script type="text/javascript" src="{{url_for('static',filename='JScript.js')}}"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 		<body>
 			<nav>
 				<form action="/" method="POST">
-					<label class="logo"><a href="{{url_for('index')}}">Medico</a></label>
+					<label class="logo">Medico</label>
 					<ul class="nav">
 						<li><i class="fa fa-phone" aria-hidden="true"></i><input type="submit" name="contact_button" value="Contact" 
 						></li>
@@ -20,11 +19,24 @@
 					</ul>
 				</form>
 				<div class="hamburger">
-					<i class="fa fa-bars" aria-hidden="true" onclick="navslide()"></i>
+					<i class="fa fa-bars" aria-hidden="true"></i>
 				</div>
 			</nav>
-			<section>
-				<p class="text" style="font-family:verdana">MEDICO- Just <strong><button><a href="{{url_for('signup')}}">Sign Up/In</a></button></strong> to take benefits of consultation with the best doctors</p>
-			</section>
+				<section>
+					<p class="text" style="font-family:verdana">MEDICO- Just <strong><button><a href="{{url_for('signup')}}">Sign Up/In</a></button></strong> to take benefits of consultation with the best doctors</p>
+				</section>
 		</body>
+		<script>
+			const navslide = () => {
+				const hamburger = document.querySelector(".hamburger");
+				const nav = document.querySelector(".nav");
+
+				hamburger.addEventListener('click', () => {
+					nav.classList.toggle("nav2");
+				 });
+			}
+
+			navslide();
+		</script>
+</html>
 </html>
