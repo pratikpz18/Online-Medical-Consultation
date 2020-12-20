@@ -22,7 +22,7 @@
 		</div>
 	</nav>
 	<form action="{{url_for('bookappointment')}}" method="POST" enctype="multipart/form-data" name="bookappointment" class = "bookappointment" onsubmit="return validate_file();">
-		<div>{{ msg }}</div>
+		<div><p style="color: green; background-color:#FFFFE0; border-width:1px;border-style:solid; font-size: 19px" >{{ msg }}</p></div>
 		<label> Appointment Date:*</label><input type="Date" name="appointmentdate" required=""><br>
 		<label> Full name:*</label><input type="text" name="firstname" size="30" placeholder="Your Name" required="">
 		<label> 
@@ -41,7 +41,7 @@
 		<textarea cols="60" rows="5" name="symptoms" placeholder="Tell us what symptoms you have" required=""></textarea>
 		<label style="line-height: 1; margin-top: 1rem;">Upload Previous Medical Report (If any)</label>
 		<label><sub >only .pdf/.doc/.txt format is allowed</sub></label>
-		<input style="margin-top: -1.8rem;" id="file" type="file" name="reportfile" notrequired="" onchange="return validate_file();">
+		<input class="file" id="file" type="file" name="reportfile" notrequired onchange="return validate_file();">
 		<button>Submit</button>
 	</form>
 	<section>
