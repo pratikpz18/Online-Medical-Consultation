@@ -47,8 +47,8 @@ form{
 }
 
 .logo a{
-    color: #e0ac69  ;
-    text-decoration: none;
+	color: #e0ac69 ;
+	text-decoration: none;
 }
 
 nav ul{
@@ -90,40 +90,40 @@ input[type="submit"]:hover{
 	color: white;
 }
 
-ul li:nth-child(2) input[type="submit"]{
+ul li:nth-child(1) input[type="submit"]{
 	color: white ;
 	font-size: 1.45rem;
 	border-bottom: 1px solid white;
 }
 
-ul li:nth-child(2) i.fa{
+ul li:nth-child(1) i.fa{
 	color: white ;
 	font-size: 1.4rem;
 }
 
-ul li:nth-child(3) input[type="submit"]{
+ul li:nth-child(2) input[type="submit"]{
 	color: #00BFFF ;
 }
 
-ul li:nth-child(3) i.fa{
+ul li:nth-child(2) i.fa{
 	color: #00BFFF ;
 	font-size: 1.4rem;
 }
 
-ul li:nth-child(4) input[type="submit"]{
+ul li:nth-child(3) input[type="submit"]{
 	color: #FF4500 ;
 }
 
-ul li:nth-child(4) i.fa{
+ul li:nth-child(3) i.fa{
 	color: #FF4500 ;
 }
 
-ul li:nth-child(3) input[type="submit"]:hover{
+ul li:nth-child(2) input[type="submit"]:hover{
 	border: none;
 	border-bottom: 1px solid #00BFFF;
 }
 
-ul li:nth-child(4) input[type="submit"]:hover{
+ul li:nth-child(3) input[type="submit"]:hover{
 	border: none;
 	border-bottom: 1px solid #FF4500;
 }
