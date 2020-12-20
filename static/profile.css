@@ -132,18 +132,18 @@ section{
     font-weight: 600;
     color: #3d3d29 ;
     position: relative;
-    top: 3vh;
+    top: 8vh;
     left: 4.5%;
     width: 60%;
 }
 
 section p{
     font-size: 1.5rem ;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
 section .button{
-    margin-top: 2rem;
+    margin-top: 1.6rem;
     text-transform: uppercase;
     padding: 6px 14px;
     font-size: 1.2rem;
@@ -162,9 +162,10 @@ table{
 }
 
 th, td {
-  padding: 6px;
-  text-align: center;
-  border: 1px solid black;
+    background: #e0e1e2 ;
+    padding: 6px;
+    text-align: center;
+    border: 1px solid black;
 }
 
 @media screen and (max-width: 608px){
