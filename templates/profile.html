@@ -6,7 +6,6 @@
     <meta charset="UTF-8"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profile.css') }}">
-    <script type="text/javascript" src="{{url_for('static',filename='JScript.js')}}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
@@ -20,7 +19,7 @@
             </ul>
         </form>
         <div class="hamburger">
-            <i class="fa fa-bars" aria-hidden="true" onclick="navslide()"></i>
+            <i class="fa fa-bars" aria-hidden="true"></i>
         </div>
     </nav>
     <section>
@@ -45,32 +44,45 @@
             }
       
 
-            $('#showA').click(function() {
-                $.ajax({
-                    type: "GET",
-                    url: "http://127.0.0.1:5000/home/profile/yourappointments",
-                    datatype: 'json',
-                    success: function(data) {
-                        mydata=JSON.parse(data);
-                        var txt="";
-                        txt += "<table border='1'>"
-                        txt+= "<thead><tr><th>Appontment ID</th><th>Appointment Date</th><th>Symptoms</th></tr></thead><tbody>"
-                        for (var x in mydata) {
-                            txt+="<tr>";
-                            txt+="<td>"+mydata[x].appoint_id+"</td>";
-                            txt+="<td>"+mydata[x].appoint_date+"</td>";
-                            txt+="<td>"+mydata[x].symptoms+"</td>";
-                        txt+="</tr>";
-                        }
-                        txt += "</tbody></table>"
-                        document.getElementById("demo").innerHTML = txt;
-                    },
-                    error: function(error){
-                        console.log("Here is the error res: " + JSON.stringify(error));
-                    }
-                });
-                return false;
-            });
+			$('#showA').click(function() {
+			    $.ajax({
+			        type: "GET",
+			        url: "http://127.0.0.1:5000/home/profile/yourappointments",
+			        datatype: 'json',
+			        success: function(data) {
+			        	mydata=JSON.parse(data);
+			        	var txt="";
+			        	txt += "<table border='1'>"
+			        	txt+= "<thead><tr><th>Appontment ID</th><th>Appointment Date</th><th>Symptoms</th></tr></thead><tbody>"
+      					for (var x in mydata) {
+      						txt+="<tr>";
+					    	txt+="<td>"+mydata[x].appoint_id+"</td>";
+					    	txt+="<td>"+mydata[x].appoint_date+"</td>";
+					    	txt+="<td>"+mydata[x].symptoms+"</td>";
+					    txt+="</tr>";
+					    }
+					    txt += "</tbody></table>"
+					    document.getElementById("demo").innerHTML = txt;
+			       	},
+			        error: function(error){
+			            console.log("Here is the error res: " + JSON.stringify(error));
+			        }
+			    });
+			    return false;
+			});
+			
+
+
+            const navslide = () => {
+            const hamburger = document.querySelector(".hamburger");
+            const nav = document.querySelector(".nav");
+
+            hamburger.addEventListener('click', () => {
+                nav.classList.toggle("nav2");
+             });
+            }
+
+        navslide();
 
 </script>
 </html>
