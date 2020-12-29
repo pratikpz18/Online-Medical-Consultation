@@ -1,2 +1,2 @@
 # Online-Medical-Consultation
-Using Flask ,MySQL 
+Using Flask,MySQL 
