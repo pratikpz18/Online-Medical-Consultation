@@ -13,7 +13,7 @@
 <img src="Screenshots\2.png" alt="Profile Page">
 
 ### Received Email (_After booking appointment successfully_)
-<img src="Screenshots\IMG-2198.png" alt="Email Pic">
+<img src="Screenshots\IMG-2198.PNG" alt="Email Pic">
 
 ### Contact Us Page 
 <img src="screenshots/Cropped/contact.png" alt="Contact Us Page">
