@@ -7,7 +7,7 @@
 
 ### Profile Page 
 
-<img src="Downloads\1.png" alt="Profile Page">
+<img src="C:\Users\Admin\Downloads\1.png" alt="Profile Page">
 
 ### Book Appointment Page 
 <img src="Downloads\2.png" alt="Profile Page">
