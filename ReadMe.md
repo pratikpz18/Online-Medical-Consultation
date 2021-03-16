@@ -3,17 +3,17 @@
 
 ## Screenshots
 ### Login Page (Signup/Signin page is similar_)
-<img src="screenshots/Cropped/login.png" alt="Login Page">
+<img src="Screenshots/Cropped/login.png" alt="Login Page">
 
 ### Profile Page 
 
-<img src="C:\Users\Admin\Downloads\1.png" alt="Profile Page">
+<img src="Screenshots\1.png" alt="Profile Page">
 
 ### Book Appointment Page 
-<img src="Downloads\2.png" alt="Profile Page">
+<img src="Screenshots\2.png" alt="Profile Page">
 
 ### Received Email (_After booking appointment successfully_)
-<img src="Downloads\IMG-2198.png" alt="Email Pic">
+<img src="Screenshots\IMG-2198.png" alt="Email Pic">
 
 ### Contact Us Page 
 <img src="screenshots/Cropped/contact.png" alt="Contact Us Page">
