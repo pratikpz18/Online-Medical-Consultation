@@ -3,7 +3,7 @@
 
 ## Screenshots
 ### Login Page (Signup/Signin page is similar_)
-<img src="Screenshots/Cropped/login.png" alt="Login Page">
+<img src="Screenshots/login.png" alt="Login Page">
 
 ### Profile Page 
 
@@ -16,8 +16,8 @@
 <img src="Screenshots\IMG-2198.PNG" alt="Email Pic">
 
 ### Contact Us Page 
-<img src="screenshots/Cropped/contact.png" alt="Contact Us Page">
+<img src="Screenshots/contact.png" alt="Contact Us Page">
 
 ### Home Page 
-<img src="screenshots/Cropped/home.png" alt="Profile Page">
+<img src="Screenshots/index.png" alt="Profile Page">
 
