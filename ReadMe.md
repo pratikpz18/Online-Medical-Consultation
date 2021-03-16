@@ -3,6 +3,7 @@
 ## Tech Stack 
 * Flask
 * MySQL
+* Jinja (as Templeting Engine)
 
 ## Screenshots
 ### Login Page (Signup/Signin page is similar_)
